@@ -5,67 +5,82 @@
     <link rel="stylesheet" href="./bootstrap/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CLIX 2044</title>
 </head>
-<body class="bg-dark"> <!--style="background-color: #1e2025;"-->
+<body data-bs-theme="dark"> <!--style="background-color: #1e2025;"-->
     <div class="container mt-5">
         <div class="row border-bottom border-danger mb-3">
             <div class="col-sm-3 col-lg-2 col-md-2 bg-dark p-4">
-                <button class="btn btn-danger p-3 w-100 h-100" type="button"><h1>Üret</h1></button>
+                <button class="btn btn-danger py-3 px-0 w-100 h-100" id="produce" type="button"><h1>Üret</h1></button>
             </div>
             <div class="col-sm-9 col-lg-10 col-md-10 bg-dark p-4">
                 <table class="table table-dark">
                     <tr>
-                        <th scope="col">Toplam Üretilen Enerji</th>
-                        <th scope="col">Geçen Süre</th>
-                        <th scope="col">Toplam Tıklama Sayısı</th>
+                        <th scope="col">Toplam Üretilen Enerji (W)</th>
+                        <th scope="col">Geçen Süre (s)</th>
+                        <th scope="col">Toplam Tıklama Sayısı (c)</th>
+                        <th scope="col">j/s</th>
+                        <!--<th scope="col">Kazanç</th>-->
                     </tr>
                     <tr>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="totalProducedEnergy">0</td>
+                        <td id="elapsedTime">0</td>
+                        <td id="totalClick">0</td>
+                        <td id="jPerWatt">0</td>
+                        <!--<td id="gain">0</td>-->
                     </tr>
                 </table>
             </div>
         </div>
-        <div class="row border-bottom border-danger mb-3">
-            <div class="col-lg-12 bg-dark">
-                <h1 class="h1 text-white">Görevler</h1>
-            </div>
-            <div data-bs-spy="scroll" data-bs-offset="0" class="col-lg-12 bg-dark">
+        <div class="row border-bottom border-danger mb-3 pb-4">
+            <div data-bs-spy="scroll" data-bs-offset="0" class="col-lg-6 bg-dark">
                 <table class="table table-dark">
                     <tr>
                         <th scope="col">Seviye</th>
                         <th scope="col">Üretilmesi Gereken Enerji</th>
                         <th scope="col">Hız Primi</th>
-                        <th scope="col">Durum</th>
                     </tr>
                     <tr id="scrollspyHeading1">
-                        <th>1</th>
-                        <th>150</th>
-                        <th>1.5</th>
-                        <th>x</th>
-                    </tr>
-                    <tr id="scrollspyHeading2">
-                        <th>2</th>
-                        <th>250</th>
-                        <th>2.53</th>
-                        <th>x</th>
+                        <th id="level">1</th>
+                        <th id="energyToBeProduced">150</th>
+                        <th id="speedBonus">1.5</th>
                     </tr>
                 </table>
             </div>
+            <div data-bs-spy="scroll" data-bs-offset="0" class="col-lg-6 bg-dark">
+                <button class="btn btn-danger w-100 h-100" id="levelUpButton" type="button">Seviye Atla</button>
+            </div>
         </div>
-        <div class="row border-bottom border-danger mb-3">
-            <div class="col-lg-12 bg-dark">
+        <div class="row border-bottom border-danger mb-3 pb-3">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 bg-dark">
                 <h1 class="h1 text-white">Otomasyon</h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex flex-row-reverse">
+                <p class="fs-5 badge bg-warning text-wrap font-monospace text-dark">Cüzdan: <span id="wallet">0</span></p>
+            </div>
+            <div class="col-lg-3 bg-dark my-1">
+                <button class="btn btn-danger w-100" type="button"><i class="material-icons p-2">polymer</i></button>
+                <p class="text-white text-center fw-bold">Bonus</p>
+            </div>
+            <div class="col-lg-3 bg-dark my-1">
+                <button class="btn btn-danger w-100" type="button"><i class="material-icons p-2">toll</i></button>
+            </div>
+            <div class="col-lg-3 bg-dark my-1">
+                <button class="btn btn-danger w-100" type="button"><i class="material-icons p-2">donut_small</i></button>
+            </div>
+            <div class="col-lg-3 bg-dark my-1">
+                <button class="btn btn-danger w-100" type="button"><i class="material-icons p-2">settings_input_svideo</i></button>
             </div>
         </div>
     </div>
 </body>
+    <script src="./jquery-3.7.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.bundle.js"></script>
     <script src="./bootstrap/js/bootstrap.esm.js"></script>
     <script src="./bootstrap/js/bootstrap.js"></script>
+    <script src="./clixCore.js"></script>
 </html>
